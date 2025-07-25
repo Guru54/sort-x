@@ -15,6 +15,8 @@ export default function StatsBar({ stats }) {
         <span className="font-medium">Time:</span>
         <span className="bg-gray-200 px-2 py-1 rounded">{stats.time}ms</span>
       </div>
+
+
     </div>
   )
 }

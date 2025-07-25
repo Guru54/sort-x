@@ -1,80 +1,93 @@
-const algorithmInfo = {
-  bubble: {
-    name: "Bubble Sort",
-    complexity: "O(n²)",
-    space: "O(1)",
-    description: "Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
-    codeLink: "https://github.com/example/bubble-sort"
-  },
-  selection: {
-    name: "Selection Sort",
-    complexity: "O(n²)",
-    space: "O(1)",
-    description: "Selection sort divides the input list into two parts: a sorted sublist and an unsorted sublist.",
-    codeLink: "https://github.com/example/selection-sort"
-  },
-  insertion: {
-    name: "Insertion Sort",
-    complexity: "O(n²)",
-    space: "O(1)",
-    description: "Insertion sort builds the final sorted array one item at a time by comparisons.",
-    codeLink: "https://github.com/example/insertion-sort"
-  },
-  merge: {
-    name: "Merge Sort",
-    complexity: "O(n log n)",
-    space: "O(n)",
-    description: "Merge sort is a divide-and-conquer algorithm that divides the input array into two halves.",
-    codeLink: "https://github.com/example/merge-sort"
-  },
-  quick: {
-    name: "Quick Sort",
-    complexity: "O(n log n) average, O(n²) worst",
-    space: "O(log n)",
-    description: "Quick sort selects a 'pivot' element and partitions the array around the pivot.",
-    codeLink: "https://github.com/example/quick-sort"
-  }
-}
+import { useState } from "react";
+import getAlgorithmInfo from "../utils/algoinfo";
 
 export default function InfoSidebar({ algorithm }) {
-  const info = algorithmInfo[algorithm] || algorithmInfo.bubble
+  const info = getAlgorithmInfo(algorithm);
+  const [showFullCode, setShowFullCode] = useState(false);
+ 
 
   return (
-    <div className="w-80 bg-white border-l overflow-y-auto p-4">
-      <h3 className="font-bold text-lg mb-4">About {info.name}</h3>
-      
-      <div className="space-y-4">
-        <div className="bg-gray-100 p-3 rounded">
-          <h4 className="font-medium mb-2">Algorithm Complexity</h4>
-          <div className="flex justify-between">
-            <span>Time:</span>
-            <span className="font-mono">{info.complexity}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Space:</span>
-            <span className="font-mono">{info.space}</span>
-          </div>
+    <aside className="w-80 min-h-full  bg-slate-50 backdrop-blur-md shadow-xl border-l border-slate-200 rounded-l-2xl p-0 flex flex-col relative">
+      <div className="h-2 w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-2" style={{ backgroundSize: "200% 200%" }} />
+       <div className="p-6 flex-1 flex flex-col space-y-6">
+        <h3 className="font-bold text-2xl mb-2 text-slate-800 drop-shadow">
+          About {info.name}
+        </h3>
+       <div className="bg-gradient-to-br from-slate-100 to-slate-200/80 p-4 rounded-xl shadow-inner border border-slate-100 
+            transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl hover:scale-[1.02]">
+       <h4 className="font-semibold mb-3 text-slate-700">Algorithm Complexity</h4>
+  
+       <div className="flex justify-between mb-1">
+        <span className="text-slate-600">Time:</span>
+       <span className="font-mono text-blue-700">{info.complexity}</span>
+       </div>
+  
+        <div className="flex justify-between">
+       <span className="text-slate-600">Space:</span>
+       <span className="font-mono text-blue-700">{info.space}</span>
+         </div>
         </div>
-        
+
         <div>
-          <h4 className="font-medium mb-2">How it works</h4>
-          <p className="text-sm">{info.description}</p>
+          <h4 className="font-semibold mb-2 text-slate-700">How it works</h4>
+          <p className="text-sm text-slate-700 leading-relaxed">{info.description}</p>
         </div>
-        
-        <div className="border-t pt-3">
+        {/* Code Block Section */}
+        <div className="relative">
+          <div className="flex justify-between items-center mb-1">
+            <span className="font-semibold text-slate-700">Algorithm Code</span>
+            <button
+              className="text-xs px-2 py-1 rounded bg-blue-100 hover:bg-blue-200 text-blue-700 font-medium transition"
+              onClick={() => setShowFullCode(true)}
+            >
+              Full Screen
+            </button>
+          </div>
+          <pre className="bg-slate-900 text-green-200 text-xs rounded-lg p-3 max-h-40 overflow-auto font-mono shadow-inner">
+            <code>
+              {info.code}
+            </code>
+          </pre>
+        </div>
+        {/* Full Screen Modal */}
+        {showFullCode && (
+          <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center">
+            <div className="bg-slate-900 rounded-xl p-6 max-w-2xl w-full mx-4 shadow-2xl relative">
+              <button
+                className="absolute top-2 right-2 text-white bg-red-500 hover:bg-red-600 rounded px-3 py-1 text-xs font-bold"
+                onClick={() => setShowFullCode(false)}
+              >
+                Close
+              </button>
+              <h4 className="text-lg font-bold text-white mb-4">Algorithm Code</h4>
+              <pre className="text-green-200 text-sm rounded-lg p-3 overflow-auto font-mono bg-slate-800 max-h-[70vh]">
+                <code>
+                  {info.code}
+                </code>
+              </pre>
+            </div>
+          </div>
+        )}
+        <div className="border-t border-slate-200 pt-4 mt-auto">
           <a 
             href={info.codeLink} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline flex items-center"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-pink-600 font-medium transition-colors group"
           >
-            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg 
+              className="w-5 h-5"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
-            View Code on GitHub
+            <span>View Code on GitHub</span>
           </a>
         </div>
       </div>
-    </div>
-  )
+    </aside>
+  );
 }
+

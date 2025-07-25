@@ -1,75 +1,91 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import SortingPlayer from './components/SortingPlayer'
-import Controls from './components/Controls'
-import InputPanel from './components/InputPanel'
-import StatsBar from './components/StatsBar'
-import InfoSidebar from './components/InfoSidebar'
-import { bubbleSort } from './utils/sorting'
+import './App.css';
+import { useRef } from 'react';
+import Navbar from './components/Navbar';
+import SortingPlayer from './components/SortingPlayer';
+import Controls from './components/Controls';
+import InputPanel from './components/InputPanel';
+import StatsBar from './components/StatsBar';
+import InfoSidebar from './components/InfoSidebar';
+import About from './components/About';
+import { useSortingVisualizer } from './hooks/useSortingVisualizer';
+import { useSortingControls } from './hooks/useSortingControls';
 
 function App() {
-  const [array, setArray] = useState([5, 2, 9, 3, 1, 6].map(num => ({ value: num, state: '' })))
-  const [algorithm, setAlgorithm] = useState('bubble')
-  const [isSorting, setIsSorting] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
-  const [speed, setSpeed] = useState(300)
-  const [stats, setStats] = useState({
-    swaps: 0,
-    comparisons: 0,
-    time: 0
-  })
+  const {
+    array,
+    steps,
+    sliderIndex,
+    algorithm,
+    isSorting,
+    isPaused,
+    speed,
+    stats,
+    setAlgorithm,
+    setSpeed,
+    setSliderIndex,
+    handleArrayChange,
+    reset,
+    setIsSorting,
+    setIsPaused,
+  } = useSortingVisualizer();
 
-  const startSorting = async () => {
-    setIsSorting(true)
-    setIsPaused(false)
-    setStats({ swaps: 0, comparisons: 0, time: 0 })
-    
-    await bubbleSort(
-      array.map(item => item.value),
-      (newArray) => !isPaused && setArray(newArray),
-      (newStats) => !isPaused && setStats(newStats),
-      speed
-    )
-    
-    setIsSorting(false)
-    setIsPaused(false)
-  }
+  const { handlePlay, handlePause } = useSortingControls({
+    isSorting,
+    isPaused,
+    setIsSorting,
+    setIsPaused,
+    reset,
+    steps,
+    sliderIndex,
+  });
 
-  const handlePause = () => setIsPaused(!isPaused)
-  const reset = () => {
-    setIsSorting(false)
-    setIsPaused(false)
-    setArray([5, 2, 9, 3, 1, 6].map(num => ({ value: num, state: '' })))
-    setStats({ swaps: 0, comparisons: 0, time: 0 })
-  }
+  const aboutRef = useRef(null);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
-      <Navbar />
-      <div className="flex flex-1 overflow-hidden">
-        <div className="flex-1 overflow-y-auto">
-          <SortingPlayer array={array} />
-          <Controls 
+    <div className="app-container">
+      <Navbar aboutRef={aboutRef} />
+      
+      <div className="main-content">
+        <div className="main-left">
+          <SortingPlayer array={array} algorithm={algorithm} />
+
+          <Controls
             isSorting={isSorting}
             isPaused={isPaused}
             speed={speed}
-            onPlay={startSorting}
+            onPlay={handlePlay}
             onPause={handlePause}
             onReset={reset}
             onSpeedChange={setSpeed}
+            steps={steps}
+            sliderIndex={sliderIndex}
+            setSliderIndex={setSliderIndex}
           />
-          <InputPanel 
-            array={array}
+
+          <InputPanel
+            array={array.map(item => item.value)}
             algorithm={algorithm}
-            onArrayChange={(newArray) => setArray(newArray.map(num => ({ value: num, state: '' })))}
+            onArrayChange={handleArrayChange}
             onAlgorithmChange={setAlgorithm}
           />
+
           <StatsBar stats={stats} />
+
+          <div className="info-sidebar-mobile">
+            <InfoSidebar algorithm={algorithm} />
+          </div>
         </div>
-        <InfoSidebar algorithm={algorithm} />
+
+        <div className="info-sidebar-desktop">
+          <InfoSidebar algorithm={algorithm} />
+        </div>
+      </div>
+
+      <div>
+        <About refProp={aboutRef} />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
