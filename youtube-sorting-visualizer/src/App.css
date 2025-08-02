@@ -1,0 +1,50 @@
+/* App container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f7fafc;
+    /* Equivalent to Tailwind's bg-gray-100 */
+}
+
+/* Main layout */
+.main-content {
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Left side for player + controls */
+.main-left {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Sidebar default hidden (mobile) */
+.info-sidebar-desktop {
+    display: none;
+}
+
+.info-sidebar-mobile {
+    display: block;
+
+}
+
+/* Desktop layout override */
+@media (min-width: 768px) {
+    .main-content {
+        flex-direction: row;
+    }
+
+    .info-sidebar-desktop {
+        display: block;
+        width: 320px;
+        border-left: 1px solid #ccc;
+        background-color: #fff;
+    }
+
+    .info-sidebar-mobile {
+        display: none;
+    }
+}
