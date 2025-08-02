@@ -36,13 +36,13 @@ export default function Navbar({ aboutRef }) {
             Algorithms
           </button>
           <a 
-            href="https://github.com/yourusername/sorting-visualizer" 
+            href="https://github.com/Guru54/sort-x" 
             target="_blank"
             rel="noopener noreferrer"
             className="bg-red-600 px-4 py-1 rounded-full hover:bg-red-700"
             style={{ color: "#fff" }}
           >
-            GitHub
+            Github
           </a>
         </div>
       </div>
