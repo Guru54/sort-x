@@ -2,7 +2,7 @@
 
 <h2 align="center">
   Interactive Sorting Algorithm Visualization<br/>
-  <a href="https://your-sorting-visualizer-url.com" target="_blank">Live Demo</a>
+  <a href="https://sort-x-vert.vercel.app/" target="_blank">Live Demo</a>
 </h2>
 
 <div align="center">
