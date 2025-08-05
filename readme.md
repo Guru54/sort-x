@@ -23,9 +23,10 @@
 
 <h3 align="center">
     🔹
-    <a href="https://github.com/your-username/sorting-visualizer/issues">Report Bug</a> &nbsp; &nbsp;
+    <a href="https://github.com/your-username/sort-x/issues">Report Bug</a> &nbsp; &nbsp;
+   
+    <a href="https://github.com/Guru54/sort-x/issues">Request Feature</a>
     🔹
-    <a href="https://github.com/your-username/sorting-visualizer/issues">Request Feature</a>
 </h3>
 
 ## TL;DR
@@ -110,7 +111,7 @@ npm run dev
 
 Give a ⭐ if you find this project useful!
 
-<a href="https://www.buymeacoffee.com/your-username" target="_blank">
+<a href="buymeacoffee.com/guru54" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60px" width="217px">
 </a>
 
