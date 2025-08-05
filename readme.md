@@ -6,7 +6,7 @@
 </h2>
 
 <div align="center">
-  <img alt="Demo" src="./screenshots/sorting-visualizer-demo.gif" />
+  <img alt="Demo" src="/sorting-visualizer/src/assets/demo.png" />
 </div>
 
 <br/>
@@ -31,6 +31,7 @@
 ## TL;DR
 
 This interactive visualization tool helps you understand how sorting algorithms work by animating each step of the sorting process. You can customize array size, sorting speed, and algorithm selection.
+You can fork this repo to modify and make changes of your own. Please give me proper credit by linking back to Guru54. Thanks!
 
 ## Built With
 
@@ -38,6 +39,8 @@ This project was built using modern web technologies:
 
 - **React.js** - Frontend library
 - **React Hooks** - State management
+- **Tailwind** - Styling
+
 - **CSS Modules** - Component styling
 - **Algorithms** - Bubble Sort, Insertion Sort, Selection Sort, Quick Sort, Merge Sort
 - **Vite** - Build tooling
@@ -68,7 +71,7 @@ Follow these instructions to set up the project locally.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/sorting-visualizer.git
+git clone https://github.com/Guru54/sort-x.git
 ```
 
 2. Install dependencies:
@@ -87,8 +90,6 @@ npm run dev
 ## Usage Instructions
 
 1. **Customize your array**:
-   - Use the slider to set array size (5-100 elements)
-   - Generate new arrays with different distributions
    - Create custom arrays with specific values
 
 2. **Select an algorithm**:
@@ -105,27 +106,6 @@ npm run dev
    - View execution time after sorting completes
    - Compare algorithm efficiency
 
-## Project Structure
-
-```
-src/
-├── assets/               # Static assets
-├── components/           # Reusable components
-│   ├── SortingVisualizer # Main visualization component
-│   ├── Controls          # Playback controls
-│   ├── InputPanel        # Array customization
-│   ├── StatsBar          # Performance metrics
-│   └── InfoSidebar       # Algorithm information
-├── hooks/                # Custom hooks
-│   ├── useSorting.js     # Sorting algorithm logic
-│   └── useAnimation.js   # Visualization timing
-├── utils/                # Utility functions
-│   ├── sorting/          # Sorting algorithms
-│   └── helpers.js        # Helper functions
-├── styles/               # Global styles
-└── App.js                # Main application component
-```
-
 ### Show your support
 
 Give a ⭐ if you find this project useful!
@@ -134,10 +114,3 @@ Give a ⭐ if you find this project useful!
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60px" width="217px">
 </a>
 
-## Contributing
-
-Contributions are welcome! Please open an issue first to discuss what you would like to change.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
