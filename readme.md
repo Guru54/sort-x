@@ -108,7 +108,6 @@ npm run dev
 
 Give a ⭐ if you find this project useful!
 
-<a href="buymeacoffee.com/guru54" target="_blank">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60px" width="217px">
-</a>
+[![Buy Me A Coffee](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-%23FFDD00?style=flat-square&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/guru54)
+
 
