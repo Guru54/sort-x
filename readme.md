@@ -14,20 +14,17 @@
 <center>
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) &nbsp;
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) &nbsp;
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) &nbsp;
 [![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com) &nbsp;
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
 </center>
+<div align="center">
+  🔹 <a href="https://github.com/Guru54/sort-x/issues">Report Bug</a> • 
+  <a href="https://github.com/Guru54/sort-x/issues">Request Feature</a> 🔹
+</div>
 
-<h3 align="center">
-    🔹
-    <a href="https://github.com/your-username/sort-x/issues">Report Bug</a> &nbsp; &nbsp;
-   
-    <a href="https://github.com/Guru54/sort-x/issues">Request Feature</a>
-    🔹
-</h3>
 
 ## TL;DR
 
